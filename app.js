@@ -3,6 +3,21 @@ const express = require('express')
 
 const app = express(); //Criando uma instancia do APP com express
 
+app.use(express.json());
+
+const log = (req, res, next) =>{
+    console.log(req.body)
+    console.log(Date.now())
+    next()
+}
+
+app.use(log)
+
+app.get('/json',(req, res) =>{
+    console.log(req.body)
+    res.json({title: 'Tarefa X', done:true}) // Devolvendo Json através do express
+})
+
 app.get('/',(req, res) =>{                      // Criando uma Rota dizendo que o ? será da Raiz (root)
     res.send('<h1>Minha Lista de Tarefas :) </h1>') // Dando um resposta para meu Get
 })
@@ -12,3 +27,5 @@ app.listen(3000, () =>{                         // Solicitando para que o APP fi
 })
 
 // Instalando o NodeMon paara auxiliar o monitoramento dos arquivos para quando houvr alterações ele já atualiza o servidor automático
+
+// Instalando o PostMan que vai auxiliar nos testes do BackEnd
