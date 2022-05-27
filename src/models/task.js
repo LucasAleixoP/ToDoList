@@ -10,4 +10,4 @@ const task = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Task',task)
+module.exports = mongoose.model('Task',task) 
